@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Device Use &amp; Face-to-Face Learning — MMW Performance Task</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600;7..72,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <span class="topbar__mark">MMW &middot; Data Gathering &amp; Presentation</span>
+    <nav class="topbar__nav" aria-label="Section navigation">
+      <a href="#overview">Overview</a>
+      <a href="#profile">Respondent Profile</a>
+      <a href="#device-use">Device Use</a>
+      <a href="#f2f">Face-to-Face Experience</a>
+      <a href="#numerical">Numerical Data</a>
+      <a href="#tables">Data Tables</a>
+    </nav>
+    <button class="topbar__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1. OVERVIEW -->
+  <section id="overview" class="hero">
+    <div class="hero__grid">
+      <div class="hero__num" aria-hidden="true">24</div>
+      <div class="hero__text">
+        <p class="eyebrow-plain">Performance Task &mdash; Data Gathering and Data Presentation</p>
+        <h1>Digital Device Use and Students&rsquo; Face-to-Face Learning Experience</h1>
+        <p class="hero__lede">This presentation organizes and presents the data collected from 24 student respondents regarding their digital device use and face-to-face learning experience.</p>
+        <div class="hero__meta">
+          <div><span class="stat-mono">n = 24</span><span>respondents</span></div>
+          <a class="hero__link" id="questionnaireLink" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=AFdmyraDPEOxXFhFOIDK5Q74w3Ne2gFMhMdBtVG3ZkxUM0kzQlFPSVhGS1ZSMkROMlkwM1Y5VkhERy4u" target="_blank" rel="noopener">View the survey questionnaire</a>
+        </div>
+      </div>
+    </div>
+    <p class="hero__caveat">This is a description of the collected sample. It does not claim that digital devices improve learning or cause distraction &mdash; see the note on correlation and causation below.</p>
+  </section>
+
+  <!-- 2. RESPONDENT PROFILE -->
+  <section id="profile" class="section">
+    <h2 class="section__title"><span class="section__index">01</span> Respondent Profile</h2>
+    <p class="section__intro">Age, year level, and the device each respondent uses most for school-related activities. All figures are drawn directly from the 24 collected responses.</p>
+
+    <div class="card-grid">
+      <article class="card">
+        <h3>Age distribution</h3>
+        <p class="card__sub">n = 24 &middot; recorded as exact ages in years</p>
+        <div class="chart-box"><canvas id="chartAge"></canvas></div>
+      </article>
+
+      <article class="card">
+        <h3>Year level</h3>
+        <p class="card__sub">n = 24</p>
+        <div class="chart-box"><canvas id="chartYear"></canvas></div>
+        <p class="card__note" id="yearNote"></p>
+      </article>
+
+      <article class="card">
+        <h3>Most-used digital device</h3>
+        <p class="card__sub">n = 24</p>
+        <div class="chart-box"><canvas id="chartDevice"></canvas></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 3. DEVICE USE -->
+  <section id="device-use" class="section">
+    <h2 class="section__title"><span class="section__index">02</span> Digital Device Use</h2>
+    <p class="section__intro">How respondents use their chosen device &mdash; for school work, for other things, and during face-to-face class time itself.</p>
+
+    <div class="card-grid card-grid--two">
+      <article class="card">
+        <h3>Q4 &mdash; Hours per day on school-related activities</h3>
+        <p class="card__sub">Continuous data &middot; histogram, bin width = 1 hour</p>
+        <div class="chart-box"><canvas id="chartQ4"></canvas></div>
+        <dl class="stat-strip" id="statsQ4"></dl>
+      </article>
+
+      <article class="card">
+        <h3>Q5 &mdash; Hours per day on non-school activities</h3>
+        <p class="card__sub">Continuous data &middot; histogram, bin width = 2 hours</p>
+        <div class="chart-box"><canvas id="chartQ5"></canvas></div>
+        <dl class="stat-strip" id="statsQ5"></dl>
+      </article>
+    </div>
+
+    <article class="card card--wide">
+      <h3>Q6 &mdash; Main activity on the device during face-to-face classes</h3>
+      <p class="card__sub">n = 24 &middot; recorded exactly as answered</p>
+      <div class="chart-box chart-box--tall"><canvas id="chartQ6"></canvas></div>
+      <p class="card__note">One response was recorded in the survey as a combined answer, &ldquo;Completing school activities/Accessing learning materials.&rdquo; It is shown here as its own category rather than merged into either option, to match what was actually submitted.</p>
+    </article>
+
+    <div class="card-grid card-grid--two">
+      <article class="card">
+        <h3>Q7 &mdash; Effectiveness of the device for the chosen activity</h3>
+        <p class="card__sub">Ordered: Very ineffective &rarr; Very effective</p>
+        <div class="chart-box"><canvas id="chartQ7"></canvas></div>
+      </article>
+
+      <article class="card">
+        <h3>Q8 &mdash; How often the device causes distraction</h3>
+        <p class="card__sub">Ordered: Never &rarr; Always</p>
+        <div class="chart-box"><canvas id="chartQ8"></canvas></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 4. FACE TO FACE EXPERIENCE -->
+  <section id="f2f" class="section">
+    <h2 class="section__title"><span class="section__index">03</span> Face-to-Face Learning Experience</h2>
+    <p class="section__intro">Five statements, each rated on the same five-point scale. Each is kept separate, exactly as asked in the survey.</p>
+
+    <div class="likert-list" id="likertList"></div>
+  </section>
+
+  <!-- 5. NUMERICAL DATA COMPARISON -->
+  <section id="numerical" class="section">
+    <h2 class="section__title"><span class="section__index">04</span> Numerical Data Comparison</h2>
+    <p class="section__intro">Each point below is one respondent, comparing their reported school-related hours (Q4) against their reported non-school hours (Q5) on the same device.</p>
+
+    <article class="card card--wide">
+      <h3>School-related hours vs. non-school hours per day</h3>
+      <p class="card__sub">n = 24 &middot; one point per respondent, labeled Respondent 01&ndash;24</p>
+      <div class="chart-box chart-box--tall"><canvas id="chartScatter"></canvas></div>
+      <p class="card__note" id="correlationNote"></p>
+    </article>
+
+    <div class="table-wrap">
+      <table class="data-table" id="tableQ4Q5Summary">
+        <caption>Summary statistics &mdash; Q4 and Q5</caption>
+        <thead>
+          <tr><th>Measure</th><th>Q4: School-related hours</th><th>Q5: Non-school hours</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 6. FREQUENCY TABLES -->
+  <section id="tables" class="section">
+    <h2 class="section__title"><span class="section__index">05</span> Frequency Tables</h2>
+    <p class="section__intro">Full tables for every categorical, ordinal, and numerical variable collected.</p>
+
+    <div id="tablesContainer" class="table-grid"></div>
+  </section>
+
+  <!-- 7. DATA TYPES -->
+  <section id="data-types" class="section">
+    <h2 class="section__title"><span class="section__index">06</span> Classifying the Data</h2>
+    <p class="section__intro">How each collected variable is classified for this MMW activity, based on how it was actually gathered.</p>
+
+    <div class="types-grid">
+      <article class="type-card">
+        <h3>Nominal</h3>
+        <ul>
+          <li>Main digital device used (Q3)</li>
+          <li>Main classroom activity on the device (Q6)</li>
+        </ul>
+      </article>
+      <article class="type-card">
+        <h3>Ordinal</h3>
+        <ul>
+          <li>Year level (Q2)</li>
+          <li>Device effectiveness (Q7)</li>
+          <li>Distraction frequency (Q8)</li>
+          <li>Likert responses (Q9&ndash;Q13)</li>
+        </ul>
+        <p class="type-card__note">Likert responses are treated as ordinal, not interval: the categories have a clear order, but the distance between &ldquo;Agree&rdquo; and &ldquo;Strongly Agree&rdquo; is not established to equal the distance between other adjacent categories.</p>
+      </article>
+      <article class="type-card">
+        <h3>Ratio</h3>
+        <ul>
+          <li>School-related device hours per day (Q4)</li>
+          <li>Non-school device hours per day (Q5)</li>
+        </ul>
+      </article>
+      <article class="type-card">
+        <h3>Age (Q1)</h3>
+        <p>The questionnaire offered age brackets, but every respondent in this sample answered with an exact age in years (18 or 19). As collected, age is therefore treated here as ratio-level numeric data rather than forced into the original ordinal brackets.</p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p><strong>Prepared by</strong> &mdash; Group 1<br>Diaz, James R. &middot; Labaco, Yhan Mark D. &middot; Valida, Chester Jhon V. &middot; Vasquez, Leslie Lance Jr P. &middot; Velasco, Rei Donovan C. &middot; Verdejo, Joff Y.</p>
+    <p><strong>Data Source</strong><br>Survey responses collected from 24 student respondents for the Mathematics in the Modern World Performance Task.</p>
+    <p class="site-footer__caveat">Note: This presentation describes the collected survey data and does not establish cause-and-effect relationships.</p>
+    <p class="site-footer__privacy">Respondent names and school email addresses collected in the original survey export are not published here. Respondents are identified only as Respondent&nbsp;01&ndash;24. The raw spreadsheet is submitted separately to the instructor.</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="chart.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
