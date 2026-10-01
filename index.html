@@ -20,6 +20,7 @@
       <a href="#device-use">Device Use</a>
       <a href="#f2f">Face-to-Face Experience</a>
       <a href="#numerical">Numerical Data</a>
+      <a href="#descriptive">Statistics</a>
       <a href="#tables">Data Tables</a>
     </nav>
     <button class="topbar__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -149,6 +150,58 @@
     </div>
   </section>
 
+  <!-- 5b. DESCRIPTIVE STATISTICS (added) -->
+  <section id="descriptive" class="section">
+    <h2 class="section__title">Descriptive Statistics</h2>
+    <p class="section__intro">Central tendency, dispersion, and relative location for the two numerical variables: school-related hours per day (Q4) and non-school hours per day (Q5). Every value is calculated from the same 24 responses used in the rest of this presentation.</p>
+
+    <article class="card card--wide">
+      <h3>Central Tendency</h3>
+      <p class="card__sub">n = 24 &middot; hours per day</p>
+      <div class="table-wrap">
+        <table class="data-table" id="tableCentral">
+          <thead>
+            <tr><th>Measure</th><th>Q4: School-related hours</th><th>Q5: Non-school hours</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="card__note">The mean is the total hours divided by 24 respondents (Q4: <span class="stat-mono" id="dsSumQ4"></span> h; Q5: <span class="stat-mono" id="dsSumQ5"></span> h). The mode is the most frequent reported value.</p>
+    </article>
+    <article class="card card--wide">
+      <h3>Dispersion</h3>
+      <p class="card__sub">n = 24 &middot; hours per day</p>
+      <div class="table-wrap">
+        <table class="data-table" id="tableDispersion">
+          <thead>
+            <tr><th>Measure</th><th>Q4: School-related hours</th><th>Q5: Non-school hours</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="card__note">Variance and standard deviation are <strong>sample</strong> statistics (divided by n &minus; 1 = 23), since the 24 respondents are a sample.</p>
+    </article>
+    <article class="card card--wide">
+      <h3>Relative Location</h3>
+      <p class="card__sub">n = 24 &middot; hours per day &middot; quartiles</p>
+      <div class="table-wrap">
+        <table class="data-table" id="tableLocation">
+          <thead>
+            <tr><th>Measure</th><th>Q4: School-related hours</th><th>Q5: Non-school hours</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="card__note">Quartiles use the inclusive (linear interpolation) method, the same as Excel&rsquo;s QUARTILE.INC. Q2 is the median.</p>
+    </article>
+    <article class="card card--wide">
+      <h3>Box plot &mdash; Q4 and Q5</h3>
+      <p class="card__sub">n = 24 &middot; hours per day &middot; same scale for both variables</p>
+      <div class="chart-box"><canvas id="chartBoxPlot"></canvas></div>
+      <p class="card__note">The box spans Q1 to Q3, the dark line inside it marks the median (Q2), and the thin line runs from the minimum to the maximum. Hover over any part to see its value.</p>
+    </article>
+  </section>
+
   <!-- 6. FREQUENCY TABLES -->
   <section id="tables" class="section">
     <h2 class="section__title"><span class="section__index">05</span> Frequency Tables</h2>
@@ -212,5 +265,6 @@
 <script src="data.js"></script>
 <script src="chart.min.js"></script>
 <script src="script.js"></script>
+<script src="descriptive-stats.js"></script>
 </body>
 </html>
