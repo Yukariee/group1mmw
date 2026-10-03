@@ -454,3 +454,12 @@ a{ color: var(--teal-dark); }
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior: auto; }
 }
+
+/* ---------------- Tables placed under each question ---------------- */
+
+.card .table-wrap--inline,
+.likert-item .table-wrap--inline{ margin-top: 18px; }
+
+.table-wrap--inline .data-table caption{ font-size: 0.95rem; padding: 10px 0; }
+.table-wrap--inline .data-table th,
+.table-wrap--inline .data-table td{ padding: 8px 12px; }

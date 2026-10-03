@@ -21,7 +21,6 @@
       <a href="#f2f">Face-to-Face Experience</a>
       <a href="#numerical">Numerical Data</a>
       <a href="#descriptive">Statistics</a>
-      <a href="#tables">Data Tables</a>
     </nav>
     <button class="topbar__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -59,6 +58,7 @@
         <h3>Age distribution</h3>
         <p class="card__sub">n = 24 &middot; recorded as exact ages in years</p>
         <div class="chart-box"><canvas id="chartAge"></canvas></div>
+        <div data-table-for="q1"></div>
       </article>
 
       <article class="card">
@@ -66,12 +66,14 @@
         <p class="card__sub">n = 24</p>
         <div class="chart-box"><canvas id="chartYear"></canvas></div>
         <p class="card__note" id="yearNote"></p>
+        <div data-table-for="q2"></div>
       </article>
 
       <article class="card">
         <h3>Most-used digital device</h3>
         <p class="card__sub">n = 24</p>
         <div class="chart-box"><canvas id="chartDevice"></canvas></div>
+        <div data-table-for="q3"></div>
       </article>
     </div>
   </section>
@@ -87,6 +89,7 @@
         <p class="card__sub">Continuous data &middot; histogram, bin width = 1 hour</p>
         <div class="chart-box"><canvas id="chartQ4"></canvas></div>
         <dl class="stat-strip" id="statsQ4"></dl>
+        <div data-table-for="q4"></div>
       </article>
 
       <article class="card">
@@ -94,6 +97,7 @@
         <p class="card__sub">Continuous data &middot; histogram, bin width = 2 hours</p>
         <div class="chart-box"><canvas id="chartQ5"></canvas></div>
         <dl class="stat-strip" id="statsQ5"></dl>
+        <div data-table-for="q5"></div>
       </article>
     </div>
 
@@ -102,6 +106,7 @@
       <p class="card__sub">n = 24 &middot; recorded exactly as answered</p>
       <div class="chart-box chart-box--tall"><canvas id="chartQ6"></canvas></div>
       <p class="card__note">One response was recorded in the survey as a combined answer, &ldquo;Completing school activities/Accessing learning materials.&rdquo; It is shown here as its own category rather than merged into either option, to match what was actually submitted.</p>
+      <div data-table-for="q6"></div>
     </article>
 
     <div class="card-grid card-grid--two">
@@ -109,12 +114,14 @@
         <h3>Q7 &mdash; Effectiveness of the device for the chosen activity</h3>
         <p class="card__sub">Ordered: Very ineffective &rarr; Very effective</p>
         <div class="chart-box"><canvas id="chartQ7"></canvas></div>
+        <div data-table-for="q7"></div>
       </article>
 
       <article class="card">
         <h3>Q8 &mdash; How often the device causes distraction</h3>
         <p class="card__sub">Ordered: Never &rarr; Always</p>
         <div class="chart-box"><canvas id="chartQ8"></canvas></div>
+        <div data-table-for="q8"></div>
       </article>
     </div>
   </section>
@@ -182,12 +189,6 @@
       <p class="card__note">Variance and standard deviation are <strong>sample</strong> statistics (divided by n &minus; 1 = 23), since the 24 respondents are a sample.</p>
     </article>
 
-  <!-- 6. FREQUENCY TABLES -->
-  <section id="tables" class="section">
-    <h2 class="section__title"><span class="section__index">05</span> Frequency Tables</h2>
-    <p class="section__intro">Full tables for every categorical, ordinal, and numerical variable collected.</p>
-
-    <div id="tablesContainer" class="table-grid"></div>
   </section>
 
   <!-- 7. DATA TYPES -->

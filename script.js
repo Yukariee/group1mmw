@@ -255,6 +255,7 @@
       <h3>${D.questions[key]}</h3>
       <div class="likert-bar">${segs}</div>
       <div class="likert-legend">${legend}</div>
+      <div data-table-for="${key}"></div>
     `;
     likertList.appendChild(item);
   });
@@ -330,12 +331,10 @@
 
   /* ---------- Full frequency / stats tables ---------- */
 
-  const tablesContainer = document.getElementById("tablesContainer");
-
   function freqTableHTML(title, sub, rows) {
     const total = rows.reduce((s, r) => s + r.frequency, 0);
     return `
-      <div class="table-wrap">
+      <div class="table-wrap table-wrap--inline">
         <table class="data-table">
           <caption>${title}${sub ? `<br><span style="font-family:var(--mono); font-size:0.72rem; color:var(--ink-soft);">${sub}</span>` : ""}</caption>
           <thead><tr><th>Category</th><th class="num">Frequency</th><th class="num">Percentage</th></tr></thead>
@@ -354,7 +353,7 @@
 
   function statsTableHTML(title, sub, stats, unit) {
     return `
-      <div class="table-wrap">
+      <div class="table-wrap table-wrap--inline">
         <table class="data-table">
           <caption>${title}${sub ? `<br><span style="font-family:var(--mono); font-size:0.72rem; color:var(--ink-soft);">${sub}</span>` : ""}</caption>
           <thead><tr><th>Statistic</th><th class="num">Value</th></tr></thead>
@@ -369,23 +368,28 @@
       </div>`;
   }
 
-  const tableBlocks = [
-    freqTableHTML("Age", "Q1 · n = 24", D.age.freq),
-    freqTableHTML("Year level", "Q2 · n = 24", D.year),
-    freqTableHTML("Main digital device", "Q3 · n = 24", D.device),
-    freqTableHTML("Main classroom activity", "Q6 · n = 24", D.q6),
-    freqTableHTML("Device effectiveness", "Q7 · n = 24", D.q7),
-    freqTableHTML("Device distraction frequency", "Q8 · n = 24", D.q8),
-    statsTableHTML("School-related device hours", "Q4 · n = 24", D.q4, " h"),
-    statsTableHTML("Non-school device hours", "Q5 · n = 24", D.q5, " h"),
-    freqTableHTML("Q9 — Stay focused during class", "n = 24", D.q9),
-    freqTableHTML("Q10 — Device helps complete tasks", "n = 24", D.q10),
-    freqTableHTML("Q11 — Understand lesson better", "n = 24", D.q11),
-    freqTableHTML("Q12 — Actively participate", "n = 24", D.q12),
-    freqTableHTML("Q13 — Easily distracted", "n = 24", D.q13),
-  ];
+  // Each table is placed directly under its own question (the slot is the
+  // <div data-table-for="qN"> at the end of that question's card).
+  const tableBlocks = {
+    q1: freqTableHTML("Frequency table", "Q1 · n = 24", D.age.freq),
+    q2: freqTableHTML("Frequency table", "Q2 · n = 24", D.year),
+    q3: freqTableHTML("Frequency table", "Q3 · n = 24", D.device),
+    q4: statsTableHTML("Summary statistics", "Q4 · n = 24", D.q4, " h"),
+    q5: statsTableHTML("Summary statistics", "Q5 · n = 24", D.q5, " h"),
+    q6: freqTableHTML("Frequency table", "Q6 · n = 24", D.q6),
+    q7: freqTableHTML("Frequency table", "Q7 · n = 24", D.q7),
+    q8: freqTableHTML("Frequency table", "Q8 · n = 24", D.q8),
+    q9: freqTableHTML("Frequency table", "Q9 · n = 24", D.q9),
+    q10: freqTableHTML("Frequency table", "Q10 · n = 24", D.q10),
+    q11: freqTableHTML("Frequency table", "Q11 · n = 24", D.q11),
+    q12: freqTableHTML("Frequency table", "Q12 · n = 24", D.q12),
+    q13: freqTableHTML("Frequency table", "Q13 · n = 24", D.q13),
+  };
 
-  tablesContainer.innerHTML = tableBlocks.join("");
+  Object.keys(tableBlocks).forEach((key) => {
+    const slot = document.querySelector('[data-table-for="' + key + '"]');
+    if (slot) slot.innerHTML = tableBlocks[key];
+  });
 
   /* ---------- Mobile nav toggle ---------- */
 
